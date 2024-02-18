@@ -10,43 +10,72 @@ const seats = document.getElementsByClassName("seat-btn");
 const tableBody = document.getElementById("table-body");
 let count = 0;
 let leftSeatCount = 40;
+let selectedButtons = [];
 
-for (const seat of seats) {
-  let setHiestCount = document.getElementById("seat-total-count").innerText;
-  if ((setHiestCount > 4)) {
-   
-  }
-  seat.addEventListener("click", function (event) {
-    const bgColor = (event.target.style.backgroundColor = "#1dd100");
-    const getSeatNum = event.target;
-    getSeatNum.disabled = true;
-    const seatNum = getSeatNum.innerText;
-    tableBody.innerHTML += `
+// Define the event handler function separately
+function seatClickHandler(event) {
+  const bgColor = (event.target.style.backgroundColor = "#1dd100");
+  const getSeatNum = event.target;
+  getSeatNum.disabled = true;
+  const seatNum = getSeatNum.innerText;
+  let tableAppendBody = (tableBody.innerHTML += `
       <tr class='seat-count'>
       <td class="py-2">${seatNum}</td>
        <td>Economy</td>
         <td class="text-right">550</td>
         </tr>
       
-      `;
+      `);
 
-    let seatCountShow = parseFloat(
-      document.getElementById("seat-total-count").innerText
-    );
-    seatCountShow += 1;
-    document.getElementById("seat-total-count").innerText = seatCountShow;
+  let seatCountShow = parseFloat(
+    document.getElementById("seat-total-count").innerText
+  );
+  seatCountShow += 1;
 
-    let totalMoney = document.getElementById("totalMoney");
-    totalMoney = parseFloat(totalMoney.innerText);
-    totalMoney += 550;
-    document.getElementById("totalMoney").innerText = totalMoney;
+  if (seatCountShow == 4) {
+    // Remove the event listener when seat count reaches 4
+    for (const seat of seats) {
+      seat.removeEventListener("click", seatClickHandler);
+    }
+  }
 
-    let leftSeat = parseFloat(
-      document.getElementById("left-seat-btn").innerText
-    );
-    leftSeat -= 1;
-    document.getElementById("left-seat-btn").innerText = leftSeat;
+  document.getElementById("seat-total-count").innerText = seatCountShow;
 
-   
-  });
+  let totalMoney = document.getElementById("totalMoney");
+  totalMoney = parseFloat(totalMoney.innerText);
+  totalMoney += 550;
+  document.getElementById("totalMoney").innerText = totalMoney;
+
+  let grandTotalbyid = document.getElementById("grand-total-id");
+  grandTotalbyid = parseFloat(grandTotalbyid.innerText);
+  grandTotalbyid += 550;
+  document.getElementById("grand-total-id").innerText = grandTotalbyid;
+
+  let leftSeat = parseFloat(document.getElementById("left-seat-btn").innerText);
+  leftSeat -= 1;
+  document.getElementById("left-seat-btn").innerText = leftSeat;
 }
+
+// Add event listener for each seat button
+for (const seat of seats) {
+  seat.addEventListener("click", seatClickHandler);
+}
+const couponInput = document.getElementById("couponInput");
+const couponButton = document.getElementById("couponButton");
+let couponLabel = document.getElementById('couponLabel')
+
+couponButton.addEventListener("click", function () {
+  let grandTotalbyid = document.getElementById("grand-total-id").innerText;
+
+
+  if (couponInput.value === "NEW15") {
+    let value = parseFloat(grandTotalbyid) - (parseFloat(grandTotalbyid) * 15) / 100;
+    document.getElementById("grand-total-id").innerText = value.toString(); // 
+    couponLabel.classList.add('hidden');
+  }
+  else if(couponInput.value === "Couple 20"){
+    let value = parseFloat(grandTotalbyid) - (parseFloat(grandTotalbyid) * 20) / 100;
+    document.getElementById("grand-total-id").innerText = value.toString(); 
+    couponLabel.classList.add('hidden');
+  }
+});

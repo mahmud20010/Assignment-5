@@ -71,7 +71,7 @@
           app. The <br />
           integrated testing features allow for a streamlined .
         </p>
-        <button onclick="ph-paribahan" id="buy-button" class="bg-green p-3 border-none rounded-lg railway-font font-bold text-black">
+        <button  id="buy-button" class="bg-green p-3 border-none rounded-lg railway-font font-bold text-black">
           Buy Ticket
         </button>
 
@@ -542,15 +542,15 @@
                 <h1 class="inter-font font-medium">BDT <span id="totalMoney">0</span></h1>
               </div>
             </div>
-            <label
+            <label id="couponLabel"
               class="input outline-none border-none focus:outline-none focus:border-none flex items-center gap-2 mt-3">
-              <input type="text" class="grow outline-none border-none focus:outline-none focus:border-none"
+              <input id="couponInput" type="text" class="grow outline-none border-none focus:outline-none focus:border-none"
                 placeholder="Have any coupon?" />
-              <span class="badge badge-info p-4 rounded-lg bg-[#1DD100] text-white">Apply</span>
+              <span id="couponButton" class="badge badge-info p-4 rounded-lg bg-[#1DD100] text-white">Apply</span>
             </label>
             <div class="flex justify-between items-center py-5">
               <h1 class="inter-font font-medium">Grand total:</h1>
-              <h2 class="inter-font font-medium">BDT <span>0</span></h2>
+              <h2 class="inter-font font-medium">BDT <span id="grand-total-id">0</span></h2>
             </div>
           </section>
 
