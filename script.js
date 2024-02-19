@@ -15,6 +15,7 @@ let selectedButtons = [];
 // Define the event handler function separately
 function seatClickHandler(event) {
   const bgColor = (event.target.style.backgroundColor = "#1dd100");
+  
   const getSeatNum = event.target;
   getSeatNum.disabled = true;
   const seatNum = getSeatNum.innerText;
@@ -56,7 +57,7 @@ function seatClickHandler(event) {
   document.getElementById("left-seat-btn").innerText = leftSeat;
 }
 
-// Add event listener for each seat button
+
 for (const seat of seats) {
   seat.addEventListener("click", seatClickHandler);
 }
@@ -78,4 +79,29 @@ couponButton.addEventListener("click", function () {
     document.getElementById("grand-total-id").innerText = value.toString(); 
     couponLabel.classList.add('hidden');
   }
+  else{
+    alert('Please provide a valid Coupon code')
+  }
 });
+
+
+document.addEventListener("DOMContentLoaded", function (e) {
+  const openModalButton = document.getElementById("openModalButton");
+  const closeModalButton = document.getElementById("closeModalButton");
+  const myModal = document.getElementById("modal");
+  
+  e.preventDefault();  
+
+  openModalButton.addEventListener("click", function () {
+    myModal.showModal();
+  });
+
+  closeModalButton.addEventListener("click", function () {
+    myModal.close();
+  });
+});
+
+
+
+
+// *********************************

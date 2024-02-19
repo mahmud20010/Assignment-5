@@ -71,7 +71,7 @@
           app. The <br />
           integrated testing features allow for a streamlined .
         </p>
-        <button  id="buy-button" class="bg-green p-3 border-none rounded-lg railway-font font-bold text-black">
+        <button id="buy-button" class="bg-green p-3 border-none rounded-lg railway-font font-bold text-black">
           Buy Ticket
         </button>
 
@@ -504,37 +504,19 @@
                 <thead class="border-dashed border-b-4">
                   <th class="py-1">
                     Seat
-                    <span id="seat-total-count" class="bg-[#1DD100] text-white px-1 py-0 border-none rounded-lg">0</span>
+                    <span id="seat-total-count"
+                      class="bg-[#1DD100] text-white px-1 py-0 border-none rounded-lg">0</span>
                   </th>
                   <th>Class</th>
                   <th class="text-right">Price</th>
                 </thead>
                 <tbody id="table-body" class="border-solid border-b-4">
-                  <!-- <tr class="seat-count">
-                    <td class="py-2">C4</td>
-                    <td>Economy</td>
-                    <td class="text-right">550</td>
-                  </tr>
-                  <tr class="seat-count">
-                    <td class="py-2">C4</td>
-                    <td>Economy</td>
-                    <td class="text-right">550</td>
-                  </tr> -->
+
                 </tbody>
               </table>
-  
-              <div>
-                <!-- seat heading  -->
-                <!-- <div class="flex justify-between">
-                  <div>Seat <span class="bg-[#1dd100] p-2 rounded-xl text-white">0</span></div>
-                  <div>Class</div>
-                  <div>Price</div>
-                </div> -->
 
 
-              </div>
-              <!-- seat number and seat class -->
-              
+
 
 
               <div class="flex justify-between items-center py-2">
@@ -544,7 +526,8 @@
             </div>
             <label id="couponLabel"
               class="input outline-none border-none focus:outline-none focus:border-none flex items-center gap-2 mt-3">
-              <input id="couponInput" type="text" class="grow outline-none border-none focus:outline-none focus:border-none"
+              <input id="couponInput" type="text"
+                class="grow outline-none border-none focus:outline-none focus:border-none"
                 placeholder="Have any coupon?" />
               <span id="couponButton" class="badge badge-info p-4 rounded-lg bg-[#1DD100] text-white">Apply</span>
             </label>
@@ -557,8 +540,8 @@
 
           <!-- Input-area -->
 
-          <form action="">
-            <label for="name" class="inter-font font-semibold text-base text-black">Passenger Name*
+          <div action="">
+            <label for="name" class="inter-font font-semibold text-base text-black " required>Passenger Name*
             </label>
             <input type="text" placeholder="Enter Your Name"
               class="input w-full border-gray-300 border border-solid focus:outline-none focus:border-none my-2" />
@@ -570,10 +553,12 @@
             </label>
             <input type="text" placeholder="Enter your Email ID"
               class="input w-full border-gray-300 border border-solid focus:outline-none focus:border-none mt-2" />
-            <button class="w-full bg-green p-3 border-none rounded-lg railway-font font-bold text-white my-6">
+            <button id="openModalButton"
+              class="w-full bg-green p-3 border-none rounded-lg railway-font font-bold text-white my-6">
               Next
             </button>
-          </form>
+
+          </div>
 
           <!-- term & condition -->
           <div class="flex justify-around items-center">
@@ -621,8 +606,8 @@
   </footer>
 
   <!-- Modal secton design -->
-  <section id="modal-window" class="flex items-center justify-center w-full h-screen bg-slate-50">
-    <div class="flex justify-center items-center flex-col w-2/4 bg-white rounded-lg p-14 space-y-6">
+  <dialog id="modal" class="modal flex items-center w-full h-screen bg-[#ffffff9e]  mx-auto justify-center text-center">
+    <div class="modal-content w-3/5 flex justify-center items-center flex-col bg-white rounded-lg p-14 space-y-6">
       <div><img src="images/success.png" alt="" /></div>
       <h2 class="text-prime font-extrabold text-2xl">Success</h2>
       <p>
@@ -631,12 +616,15 @@
       </p>
       <p>Shortly you will find a confirmation in your email.</p>
       <div class="w-full flex justify-center">
-        <button class="w-3/6 bg-green-600 p-3 rounded-full text-white font-bold my-6">
+        <button id="closeModalButton" class="btn w-3/6 bg-green-600 p-3 rounded-full text-white font-bold my-6">
           Continue
         </button>
       </div>
     </div>
-  </section>
+  </dialog>
+
+
+
 
 
   <script src="script.js"></script>
